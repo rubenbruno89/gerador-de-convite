@@ -1,0 +1,186 @@
+<html><head><base href="https://websim.creation.engine/"><style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+.container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    max-width: 800px;
+    width: 100%;
+}
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #34495e;
+}
+input[type="text"], input[type="date"], input[type="time"], textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #bdc3c7;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+textarea {
+    height: 100px;
+    resize: vertical;
+}
+button {
+    background-color: #3498db;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin: 30px auto;
+}
+button:hover {
+    background-color: #2980b9;
+}
+#convite {
+    margin-top: 30px;
+    border: 1px solid #bdc3c7;
+    padding: 20px;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    white-space: pre-wrap;
+    font-size: 14px;
+    line-height: 1.6;
+}
+</style></head><body>
+<div class="container">
+    <h1>Gerador de Convite de Concurso</h1>
+    <div class="form-group">
+        <label for="concurso">Nome do Concurso:</label>
+        <input type="text" id="concurso" required>
+    </div>
+    <div class="form-group">
+        <label for="local">Nome do Local de aplicação:</label>
+        <input type="text" id="local" required>
+    </div>
+    <div class="form-group">
+        <label for="coordenador">Nome do coordenador:</label>
+        <input type="text" id="coordenador" required>
+    </div>
+    <div class="form-group">
+        <label for="endereco">Endereço do local de prova:</label>
+        <input type="text" id="endereco" required>
+    </div>
+    <div class="form-group">
+        <label for="data">Data:</label>
+        <input type="date" id="data" required>
+    </div>
+    <div class="form-group">
+        <label for="funcao">Função e valor:</label>
+        <input type="text" id="funcao" required>
+    </div>
+    <div class="form-group">
+        <label for="chegada">Horário de chegada:</label>
+        <input type="time" id="chegada" required>
+    </div>
+    <div class="form-group">
+        <label for="termino">Horário de término da prova:</label>
+        <input type="time" id="termino" required>
+    </div>
+    <div class="form-group">
+        <label for="interesse">Interesse (como demonstrar):</label>
+        <input type="text" id="interesse" required>
+    </div>
+    <div class="form-group">
+        <label for="observacao">Observação importante:</label>
+        <textarea id="observacao" required></textarea>
+    </div>
+    <div class="form-group">
+        <label for="link">Link de Inscrição:</label>
+        <input type="text" id="link" required>
+    </div>
+    <button onclick="gerarConvite()">Gerar Convite</button>
+    <div id="convite"></div>
+</div>
+
+<script>
+function gerarConvite() {
+    const concurso = document.getElementById('concurso').value;
+    const local = document.getElementById('local').value;
+    const coordenador = document.getElementById('coordenador').value;
+    const endereco = document.getElementById('endereco').value;
+    const data = document.getElementById('data').value;
+    const funcao = document.getElementById('funcao').value;
+    const chegada = document.getElementById('chegada').value;
+    const termino = document.getElementById('termino').value;
+    const interesse = document.getElementById('interesse').value;
+    const observacao = document.getElementById('observacao').value;
+    const link = document.getElementById('link').value;
+
+    const dataFormatada = new Date(data).toLocaleDateString('pt-BR', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+    });
+
+    const conviteTemplate = `Leia com atenção todas as informações abaixo:
+
+${concurso}
+${local}
+Coordenação: ${coordenador}
+
+📍Endereço: ${endereco}
+🗓️ Datas: ${dataFormatada}
+
+Detalhes Importantes:
+
+${funcao}
+
+
+⏰ Chegada: ${chegada}
+Término da prova: ${termino}
+
+Se tiver interesse: ${interesse}
+
+IMPORTANTE
+
+${observacao}
+
+
+Itens Necessários:
+
+⌚ Relógio analógico.
+🖋️ Caneta preta transparente.
+👖 Calça jeans ou preta.
+🥼 Camisa/blusa branca. Evite roupas muito decotadas ou transparentes.
+👟 Sapatos confortáveis e silenciosos (não é permitido o uso de rasteiras, tamancos ou chinelos).
+
+
+Observações Importantes:
+
+⚠️ Proibida a divulgação em redes sociais. 
+📵 Telefones permanecerão desligados e guardados na coordenação até o fim da aplicação.
+❌️Não é permitido sair após ingresso na escola.
+
+Link de Inscrição: ${link}`;
+
+    document.getElementById('convite').textContent = conviteTemplate;
+}
+</script>
+</body></html>
