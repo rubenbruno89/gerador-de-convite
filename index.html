@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <link rel="stylesheet" href="style.css" />
+  <script type="importmap">
+  {
+    "imports": {
+      "html2canvas": "https://esm.sh/html2canvas@1.4.1"
+    }
+  }
+  </script>
+</head>
+<body>
+  <main id="app">
+    <form id="form" autocomplete="off" onsubmit="return false;">
+      <div class="col inputs">
+        <input name="CONCURSO" placeholder="CONCURSO" />
+        <input name="LOCAL" placeholder="LOCAL" />
+        <input name="COORDENADOR" placeholder="Coordenação" />
+        <input name="ENDERECO" placeholder="Endereço" />
+        <input name="DATA" placeholder="Datas" />
+        <textarea name="DETALHES" placeholder="Detalhes da função" rows="2"></textarea>
+        <div class="row">
+          <input name="HORARIO_CHEGADA" placeholder="Chegada (ex: 08:00)" />
+          <input name="HORARIO" placeholder="Término (ex: 12:00)" />
+        </div>
+        <input name="INTERESSE" placeholder="Se tiver interesse" />
+        <textarea name="OBSERVACAO" placeholder="Observação importante" rows="2"></textarea>
+        <input name="LINK" placeholder="Link de Inscrição (URL)" />
+        <div class="actions">
+          <button id="previewBtn" type="button">Atualizar</button>
+          <button id="downloadBtn" type="button">Baixar PNG</button>
+          <button id="printBtn" type="button">Imprimir</button>
+        </div>
+      </div>
+
+      <div class="col preview-wrap">
+        <div id="preview" class="card" aria-live="polite">
+          <div class="header">CONVITE</div>
+          <div class="content">
+            <div class="line big">#CONCURSO#</div>
+            <div class="muted">#LOCAL#</div>
+            <div>Coordenação: <span id="p-coord">#COORDENADOR#</span></div>
+            <div class="meta">📍 Endereço: <span id="p-end">#ENDERECO#</span></div>
+            <div class="meta">🗓️ Datas: <span id="p-data">#DATA#</span></div>
+            <hr/>
+            <div id="p-detalhes">#DETALHES DA FUNCAO#</div>
+            <div class="meta">⏰ Chegada: <span id="p-chegada">#HORARIO DA CHEGADA#</span></div>
+            <div class="meta">Término da prova: <span id="p-horario">#HORARIO#</span></div>
+            <div class="meta">Se tiver interesse: <span id="p-interesse">#INTERESSE#</span></div>
+            <hr/>
+            <div class="important">IMPORTANTE</div>
+            <div id="p-obs">#OBSERVACAO#</div>
+            <hr/>
+            <div class="items">
+              <div>Itens Necessários:</div>
+              <ul>
+                <li>⌚ Relógio analógico.</li>
+                <li>🖋️ Caneta preta transparente.</li>
+                <li>👖 Calça jeans ou preta.</li>
+                <li>🥼 Camisa/blusa branca.</li>
+                <li>👟 Sapatos confortáveis e silenciosos.</li>
+              </ul>
+            </div>
+            <div class="warnings">
+              ⚠️ Proibida a divulgação em redes sociais.<br/>
+              📵 Telefones permanecerão desligados e guardados na coordenação até o fim da aplicação.<br/>
+              ❌️Não é permitido sair após ingresso na escola.
+            </div>
+            <div class="link">Link de Inscrição: <a id="p-link" href="#" target="_blank">#LINK#</a></div>
+          </div>
+        </div>
+        <div class="hint">Toque "Atualizar" para aplicar mudanças. Baixe ou imprima o convite.</div>
+      </div>
+    </form>
+  </main>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
